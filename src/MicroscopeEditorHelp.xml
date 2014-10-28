@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<help>
+<instruction>
+	<target>validateButton</target>
+	<title>Continue Button</title>
+	<description>Here is a cool description of what it is.</description>
+</instruction>
+
+<instruction>
+	<target>pixelDepthLabel,pixelDepthTextField</target>
+	<title>Space between planes</title>
+	<description>z-plane spacing</description>
+</instruction>
+
+<instruction>
+	<target>lambdaLabel,lambdaTextField</target>
+	<title>Emission wavelength</title>
+	<description>Center wavelength of used emission/detection filter </description>
+</instruction>
+
+<instruction>
+	<target>naLabel,naTextField</target>
+	<title>Numerical Aperture of used objective</title>
+	<description> </description>
+</instruction>
+
+<instruction>
+	<target>refractionIndiceLabel,refractionIndiceTextField</target>
+	<title>Refractive Index</title>
+	<description>Refractive index of immersion medium e.g. 1.0 (air), 1.33 (water), 1.52 (oil) etc. </description>
+</instruction>
+
+
+
+<instruction>
+	<target>unitTextField,unitLabel</target>
+	<title>Units</title>
+	<description>This field define the used unit in all the program.\nWe recommend to use Âµm.</description>
+	
+</instruction>
+
+<instruction>
+	<target>spaceBetweenStacksLabel,spaceBetweenStacksTextField</target>
+	<title>Space between stacks</title>
+	<description>Please specify here the z-plane spacing used for the acquisition of\nthe image stack(s).</description>
+</instruction>
+
+<instruction>
+</instruction>
+
+<instruction>
+	<target>pixelWidthLabel,pixelWidthTextField,pixelHeightLabel,pixelHeightTextField,pixelDepthTextField,pixelDepthLabel</target>
+	<title>Voxel Size</title>
+	<description>Voxel size in specimen space\ni.e., voxel width and height = pixel width and height divided by the total magnification\nvoxel depth = z-plane spacing</description>
+</instruction>
+
+<instruction>
+	<target>beadSizeLabel,bidSizeTextField</target>
+	<title>Bead Size</title>
+	<description>diameter of the fluorescence beads used</description>
+</instruction>
+
+<instruction>
+	<target>cameraPixelSizeLabel,cameraPixelSizeTextField</target>
+	<title>Camera Pixel Size</title>
+	<description>this value (also called pixel pitch) can be found in the spec-sheet of your camera</description>
+</instruction>
+
+<instruction>
+	<target>magnificationLabel,magnificationComboBox</target>
+	<title>Magnification</title>
+	<description>total magnification is the product of the magnification of the objective e.g. 60x (which is given on the objective) and any secondary magnification which might have been used e.g. 1.5x, i.e., 60x * 1.5x = 90x</description>
+</instruction>
+
+<instruction>
+	<target>advancedSettingsToggleButton</target>
+	<title>Custom Voxels Dimensions or Auto calculated Voxels Dimensions</title>
+	<description>
+	</description>
+
+</instruction>
+
+<instruction>
+	<target>multiplePdfCheckBox</target>
+	<title>Save all report in one PDF</title>
+	<description>If you check this box, only one PDF containing all the PSF Report will be created.\nIf you don't check this box, a PDF file will be created for each bead.</description>
+</instruction>
+
+</help>

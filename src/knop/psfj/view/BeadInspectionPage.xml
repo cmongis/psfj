@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<panel id="mainPanel"
+	layout="BorderLayout(10,10,10,10,10)">
+	<panel layout="BorderLayout" constraints="BorderLayout.WEST">
+		<scrollpane constraints="BorderLayout.CENTER">
+			<list id="listContainer" />
+		</scrollpane>
+		
+		<label id="explainationLabel" constraints="BorderLayout.NORTH" />
+	</panel>
+	
+	<panel layout="BorderLayout" constraints="BorderLayout.CENTER" id="secondPanel">
+		<panel constraints="BorderLayout.CENTER" id="canvasContainer" layout="BorderLayout">
+			
+		</panel>
+		<vbox constraints="BorderLayout.SOUTH" border="EmptyBorder(10,10,10,10)">
+			<hbox>
+				<label id="selectionInfos" text=" "/>
+			</hbox>
+			<hbox>
+				<button id="exportSubstacksButton" text="Save substacks as..." action="exportSelectedBeads"
+					/>
+				<button id="showSubstackButton" text="Display substack" action="displaySelectedBead"
+					visible="false" />
+				<button id="averageBeadsButton" text="Average substacks" action="averageSelectedBeads"
+					/>
+				<button id="displayReportsButton" text="Display bead reports" action="displayIndividualReports"/>
+				
+				<button id="exportCsvButton" text="Export as CSV file..." action="exportSubstacksInCsv"
+					 />
+			</hbox>
+		</vbox>
+		
+	</panel>
+	
+	
+	
+</panel>
+	
+

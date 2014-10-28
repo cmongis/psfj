@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><frame title="PSFj %s" size="1300,800" id="mainFrame">
+
+<panel layout="BorderLayout(10,10)">
+	
+	
+	<vbox border="EmptyBorder(10,10,10,10)" constraints="BorderLayout.NORTH">
+			
+	<label id="explainationLabel"  />
+	
+	</vbox>
+	<panel constraints="BorderLayout.CENTER"  layout="BorderLayout" id="pageContainer" border="EmptyBorder(10,10,10,10)">
+		
+		
+		
+		<!--<panel  layout="FlowLayout"/> -->
+		
+		
+		
+	</panel>
+	<panel constraints="BorderLayout.SOUTH" layout="BorderLayout(10,10,10,10)">
+	
+		<hbox constraints="BorderLayout.CENTER" border="EmptyBorder(10,10,10,10)">
+			<progressbar id="progressBar" visible="false"  />
+			<label text="      " />
+			<label id="progressLabel" preferedSize="(200,20)"/>
+		</hbox>
+	
+		
+		<hbox constraints="BorderLayout.WEST">
+			<label text= "   " />
+			<label text="Memory usage : " id="memoryLabel" />
+			<label text= "   " />
+			<progressbar id="memoryProgressBar" setPreferedSize="30,30" />
+		</hbox>
+		
+	
+		<panel constraints="BorderLayout.EAST">
+			
+		
+			<button id="previousButton" text=" Previous " action="onPreviousButtonPressed"/>
+			<glue/>
+			<button id="nextButton" text=" Next " action="onNextButtonPressed"/>
+			
+		</panel>
+	</panel>
+	
+</panel>
+
+
+</frame>

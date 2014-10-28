@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame size="100,200" id="mainFrame" title="Microscope Resolution Prober v1.0, build 40">
+	<panel layout="BorderLayout(10,10,10)" >
+
+		<menubar constraints="BorderLayout.NORTH">
+			<menu text="File">
+				<menuitem action="openImage" text="Open" icon="img_Open" />
+				<separator />
+
+				<menuitem action="getResults" text="Get the results" icon="img_Save" />
+				<separator />
+				<menuitem action="exit" text="Exit PatroloJ" />
+			</menu>
+			<menu text="Calibration">
+				 <menuitem action="editMicroscope" text="Image and Microscope" />
+			</menu>
+		</menubar>
+
+		<vbox constraints="BorderLayout.CENTER" border="EmptyBorder(0,10,10,10)" id="mainPanel">
+
+			<panel border="EmptyBorder(0,10,10,10)">
+			<label font="Sans-BOLD-18" text="Bead Detection" />
+			</panel>
+			<hbox border="TitledBorder( 1. Focal plane )" >
+				<slider id="focusSlider" border="EmptyBorder(5,5,5,5)"/>
+				<label id="focusSliderLabel" />
+				<button text="Auto" action="resetFocus"/>
+			</hbox>
+			<panel orientation=" SwingConstants.VERTICAL" border="EmptyBorder(10,10,10,10)"/>
+			<hbox border="TitledBorder( 2. Bead detection threshold )" >
+				<slider id="segmentationThresholdSlider" border="EmptyBorder(5,5,5,5)"/>
+				<label id="thresholdSliderLabel" />
+				<button text="Auto" action="resetThreshold"/>
+			</hbox>
+			<panel orientation=" SwingConstants.VERTICAL" border="EmptyBorder(10,10,10,10)"/>
+			<!-- <panel orientation=" SwingConstants.VERTICAL" border="EmptyBorder(10,10,10,10)"/> -->
+			<hbox border="TitledBorder( 3. Bead field size )">
+				<slider id="bidSizeSlider" border="EmptyBorder(5,5,5,5)"/>
+				<label id="beadSizeSliderLabel" />
+				<button text="Auto" action="resetFactor"/>
+			</hbox>
+			<panel orientation=" SwingConstants.VERTICAL" border="EmptyBorder(5,5,5,5)"/>
+			
+			<panel layout="FlowLayout(0,10,10)" border="EmptyBorder(5,5,5,5)">
+				<label font="Default-BOLD-14" text="Beads Found : " />
+				<label id="bidNumberLabel" text="0" />
+
+			</panel>
+			
+			<!--  
+			<hbox border="TitledBorder( Display )" visible="false">
+				<hbox border="EmptyBorder(5,5,5,5)">
+				<togglebutton text="Beads Image" id="bidImageButton "
+					addAction="displayBidImage" setSelected="(true)" border="EmptyBorder(5,5,5,5)"/>
+				<glue />
+				<togglebutton text="Segmented Image" id="segmentedImageButton"
+					addAction="displaySegmentedImage" selected="false" border="EmptyBorder(5,5,5,5)"/>
+				</hbox>
+			</hbox>
+			-->
+			
+			
+			<panel border="EmptyBorder(5,5,5,5)">
+				<button  text="4. Process the results" id="getResultsButton"
+					Action="getResults"  enabled="false" />
+			</panel>
+	
+			
+			<panel border="EmptyBorder(10,10,10,10)">
+			<label font="Sans-BOLD-18" text="Exporting" />
+			</panel>
+			<hbox>
+			<vbox border="TitledBorder( 5. Reporting )" setAlignementX="0.0">
+			
+			<checkbox text="Export Data to Disk           " id="saveResultCheckBox" action="onSaveResultsChecking" border="EmptyBorder(5,5,5,5)" />
+			<checkbox text="Create one report per bead          "   border="EmptyBorder(5,5,5,5)" id="multiplePdfCheckBox" tooltip="If you don't check this option,\na single PDF will be created for each bead." action="onMultiplePDFCheck" visible="true"/>
+			</vbox>
+			</hbox>
+			<glue />
+		</vbox>
+
+
+		<hbox  id="imagePanel" constraints="BorderLayout.SOUTH" border="EmptyBorder(10,10,10,10)">
+			<label id="statusLabel" />
+			<glue />
+			<progressbar id="progressbar" stringPainted="true"/>
+
+		</hbox>
+	</panel>
+</frame>
+
+

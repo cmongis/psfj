@@ -1,0 +1,85 @@
+
+<style type="text/css">
+	center {
+		display:block
+		
+		padding:10px;
+	}
+	
+
+	table {
+		margin:5px;
+	}
+	
+	table th {
+		background:black;
+		color:white;
+		padding:5px;
+	}
+	
+	table td {
+		padding:5px;
+		
+	}
+
+</style>
+	<div style="margin:5px;width:300px">
+	
+	<h3>General infos</h3>
+	<b>Microscope ID </b> : %microscope_id<br>
+	<b>Wavelength </b> : %wave_length <br />
+	<b>NA</b> : %NA <br />
+	<b>Refraction index</b> : %refraction<br />
+	<b>Voxel size</b> : %voxel_size
+	<br><br>
+	<b>Threshold</b> : %threshold%<br />
+	<b>Sub-stack size</b> : %substack_size% pixels
+	
+	
+	<h3>Statistics</h3>
+	<
+	<b>Total number of beads</b> : %totalBeads<br />
+	<b>Beads included in the analysis </b>: %bead_number <br />
+	<b>Beads filtered out </b> : %deletedBeads<br />
+		</div>
+	<br>
+	<br>
+	
+	
+	
+	<table width=300>
+		<tr>
+			<td></td>
+			<th>Median</th>
+			<th>Theoritical</th>
+		</tr>
+		<tr>
+			<th>FWHM min</th>
+			<td>%fwhm_X </td>
+			<td>%fwhm_th_X </td>
+		</tr>
+		
+		<tr>
+			<th>FWHM max </th>
+			<td>%fwhm_Y </td>
+			<td>%fwhm_th_Y </td>
+		</tr>
+		
+		<tr>
+			<th>FWHM Z</th>
+			<td>%fwhm_Z </td>
+			<td>%fwhm_th_Z </td>
+		</tr>
+		<tr>
+			<th>Planarity</th>
+			<td>%planarity%</td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>Asymmetry</th>
+			<td>%asymmetry%</td>
+			<td></td>
+		</tr>
+	</table>
+	
+<center><font color="red"><b>For interpretation of results, please refer to the PSFj manual.</b></font></center>

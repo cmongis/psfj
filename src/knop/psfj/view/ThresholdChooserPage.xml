@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<panel id="mainPanel"
+	layout="BorderLayout(10,10,10,10,10)">
+	<panel layout="BorderLayout" constraints="BorderLayout.CENTER" id="canvasContainer">
+		
+		<panel layout="BorderLayout" constraints="BorderLayout.SOUTH" id="rangePanel">
+			<panel constraints="BorderLayout.NORTH" layout="BorderLayout"
+			id="rangeInfoPanel" setOpaque="true" background="java.awt.Color.black">
+				<label id="leftRangeLabel" font="Default-8-plain" constraints="BorderLayout.CENTER" text="Contrast settings : use sliders to set min/max values."					/>
+				<label id="pixelValueLabel" font="Default-8-plain" constraints="BorderLayout.EAST"/>
+				
+			</panel>
+		</panel>
+	</panel>
+	
+	<scrollpane constraints="BorderLayout.WEST">
+		<list id="beadImageList" />
+	</scrollpane>
+	
+	
+	<panel constraints="BorderLayout.EAST" layout="Borderlayout(10)">
+		<hbox constraints="BorderLayout.NORTH">
+			<label  text="Focus" />
+		</hbox>
+		<slider id="focusSlider" constraints="BorderLayout.CENTER"/>
+		<vbox constraints="BorderLayout.SOUTH">
+			<label id="focusLabel" constraints="BorderLayout.SOUTH"/>
+			<button id="focusAutoButton" text="Auto" action="onAutoFocusButtonPressed"/>
+		</vbox>
+	</panel>
+	
+	<vbox constraints="BorderLayout.SOUTH">
+		<separator/>
+		<hbox >
+			<label text="Threshold (intensity) :    " />
+			<slider id="thresholdSlider" />
+			<label id="thresholdLabel" />
+			<button id="thresholdAutoButton" action="onAutoThresholdButtonPressed" text=" Auto
+				"/>
+		</hbox>
+		
+		<hbox >
+			<label text="Sub-stack size :    " />
+			<slider id="beadSizeSlider" />
+			<label id="beadSizeLabel" />
+			<button id="beadSizeAutoButton" action="onAutoBeadSizeButtonPressed" text=" Auto "/>
+		</hbox>
+		
+	</vbox>
+</panel>
+	
+

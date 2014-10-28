@@ -1,0 +1,111 @@
+
+<style type="text/css">
+	center {
+		display:block
+		background:white;
+		padding:10px;
+	}
+	div, table {
+		display:inline-block;
+	}
+
+	table {
+		
+	}
+	
+	table th {
+		background:black;
+		color:white;
+		padding:5px;
+	}
+	
+	table td {
+		padding:5px;
+		text-align:center;
+	}
+	
+	table td.theo {
+		background:#eeeeee;
+	}
+	
+	h3 {
+		text-decoration:underline
+	}
+	div {
+		margin:5px;
+	}
+</style>
+<div>
+		<h3>Statistics (1st channel / 2nd channel)</h3>
+		<b>Number of beads </b> : %totalBead1 / %totalBead2 <br />
+		<b>Matching beads between channels </b>: %bead_number<br />
+		
+		<h3>General infos</h3>
+		<b>Wavelength </b> : %wavelength1 / %wavelength2 <br />
+		<b>NA</b> : %NA <br />
+		<b>Refraction index</b> : %refraction
+		
+		<br><br>
+		<b>Threshold</b> : %threshold_1% / %threshold_2%<br />
+		<b>Substack size</b> : %substack_size_1% pixels / %substack_size_2% pixels
+		
+		<br><br>
+		<b>Voxel size</b> : %voxel_size
+		
+		<br>
+		<br>
+
+	
+	<table style="width:200px">
+			 <tr>
+			    <th>Wavelength</th>
+			    <th colspan="2">%wavelength1</th>
+			    <th colspan="2">%wavelength2</th>
+			  </tr>
+			  
+			  <tr class="tg-even">
+			  	<th>FWHM</th>
+			  	<td>Calculated</td>
+			  	<td class="theo">Theoretical</td>
+			  	<td>Calculated</td>
+			  	<td class="theo">Theoretical</td>
+			  
+			  </tr>
+			  
+			  <tr class="tg-even">
+			    <th> min </th>
+			    <td>%fwhmX1</td>
+			    <td class="theo">%fwhmXth1</td>
+			    <td>%fwhmX2</td>
+			    <td class="theo">%fwhmXth2</td>
+			  </tr>
+			  <tr>
+			    <th> max </th>
+			    <td>%fwhmY1</td>
+			    <td class="theo">%fwhmYth1</td>
+			    <td>%fwhmY2</td>
+			    <td class="theo">%fwhmYth2</td>
+			  </tr>
+			  <tr class="tg-even">
+			    <th> Z </th>
+			    <td>%fwhmZ1</td>
+			    <td class="theo">%fwhmZth1</td>
+			    <td>%fwhmZ2</td>
+			    <td class="theo">%fwhmZth2</td>
+			  </tr>
+			  
+			  <tr class="tg-even">
+			  	<th> Asymmetry </th>
+			    <td colspan="2">%asymmetry1%</td>
+			    <td colspan="2">%asymmetry2%</td>
+			  </tr>
+			  
+			  <tr class="tg-even">
+			  	<th> Planarity </th>
+			    <td colspan="2">%planarity1%</td>
+			    <td colspan="2">%planarity2%</td>
+			  </tr>
+		</table>
+	<center><font color="red"><b>For interpretation of results, please refer to the PSFj manual.</b></font></center>
+	</div>
+

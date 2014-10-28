@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+
+
+<panel id="mainPanel"
+	layout="BorderLayout">
+	<panel  layout="BorderLayout(10,10,10,10,10)" id="mainPanel2">
+		
+		
+		<tabbedpane constraints="BorderLayout.CENTER" id="tabbedPane">
+			
+			
+			
+			<panel name = "Overview" layout="BorderLayout" border="EmptyBoder(10,10,10,10)">
+				<scrollpane constraints="BorderLayout.CENTER">
+					<panel layout="BorderLayout">
+						<panel layout="BorderLayout"  id="statsPanel" constraints="BorderLayout.WEST">
+							<panel constraints="BorderLayout.WEST" layout="BorderLayout">
+								<label id="statsLabel"  constraints="BorderLayout.NORTH"/>
+								
+							</panel>
+							
+						</panel>
+						<panel layout="FlowLayout" constraints="BorderLayout.CENTER" >
+								<label id="imageLabel" border="EmptyBorder(10,10,10,10)" constraints="BorderLayout.WEST"/>
+								<glue />
+								</panel>
+					</panel>
+				</scrollpane>
+				<panel layout = "FlowLayout" constraints="BorderLayout.SOUTH">
+					<button visible="false" text="Include previous analysis" action="onIncludeDataSet"
+						/>
+					
+					<label text="      Export as " font="Arial-18-bold"/>
+					<combobox id="actionComboBox"  />
+					<button id="generatePdfButton" text=" Generate Quick PDF Report " action="onQuickPDFSumUp"
+						font="blue-18-bold"/>
+				</panel>
+				
+			</panel>
+			
+			
+			<panel name="Heatmap" layout="BorderLayout">
+				
+				<panel id="canvasPanel" layout="BorderLayout(10,10,10,10)" constraints="BorderLayout.CENTER">
+					
+					<panel id="controlPanel" layout ="FlowLayout" constraints="BorderLayout.NORTH">
+						
+						<label text="Shown data :  " />
+						<combobox id="columnComboBox" />
+						
+						<label text = "  Units : " />
+						<buttongroup>
+							<togglebutton id="micrometerButton" action="onMicrometerButtonPressed" text="µm"/>
+							<togglebutton id="normalizedButton" action="onNormalizedButtonPressed" text="normalized"/>
+						</buttongroup>
+						<label text="  " />
+						<button id="fullscreenButton" text="Display on full screen" action="onFullscreen"
+							visible="false"/>
+						
+					</panel>
+					
+					
+					<vbox constraints="BorderLayout.EAST">
+						<label id="descriptionTextPane" text="I'm here :-)" border="EmptyBorder(5,5,5,5)"/>
+						
+					</vbox>
+					
+				</panel>
+				
+			</panel>
+			
+			<panel name="Bead inspection" id="inspectionPanel" layout="BorderLayout">
+				
+				
+			</panel>
+			
+		</tabbedpane>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</panel>
+</panel>

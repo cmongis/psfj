@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame size="200,100" id="mainFrame" title="Microscope and Calibration Parameters">
+	<panel layout="BorderLayout" id="mainPanel">
+
+
+		<hbox constraints="BorderLayout.CENTER">
+			<panel border="TitledBorder( Microscope Settings )">
+				<panel layout="GridLayout(10,2,10,10)">
+					<label text="Emission WaveLength (nm) : " id="lambdaLabel" />
+					<textfield id="lambdaTextField" />
+					<label text="NA : " />
+					<textfield id="naTextField" />
+
+					<label text="Refraction Index : " id="refractionIndiceLabel" />
+					<textfield id="refractionIndiceTextField" />
+
+					<label text="Bead Diameter (µm) : " id="bidSizeLabel" />
+
+					<textfield id="bidSizeTextField" />
+					<glue />
+					<glue />
+					<label text="Theoritical Values" font="-22-Bold" />
+					<label text="" />
+					<label text="FWHM Airy (x/y) :" />
+					<label text="0.0" id="fwhmXYLabel" />
+					<label text="FWHM Sinc (z) : " />
+					<label text="0.0" id="fwhmZLabel" />
+					<label text="Resolution (xy / z): " />
+					<label text="0.0" id="resolutionLabel" />
+					<label text="Bead Diam. / FWHM XY : " />
+					<label text="0.0" id="beadDiamOverFWHMXY" />
+				</panel>
+			</panel>
+			<glue />
+			<panel border="TitledBorder( Image Calibration )">
+				<vbox border="EmptyBorder(5,5,5,5)">
+					
+					<panel layout="BorderLayout(10,10,10,10)">
+						<radiobutton text="I don't know the voxel size of the image."
+							constraints="BorderLayout.NORTH" action="onModeChanged" id="easyModeRadioButton"/>
+						<panel layout="GridLayout(4,2,10,10)" constraints="BorderLayout.CENTER">
+							<!-- <label text="Units" id="unitLabel" visible="false" /> -->
+							<!-- <combobox id="unitComboBox" visible="false"/> -->
+
+							<label id="spaceBetweenStacksLabel" text="Space between planes (µm) : " />
+							<textfield id="spaceBetweenStacksTextField" />
+
+							<label id="cameraPixelSizeLabel" text="Camera Pixel Size (µm) : " />
+							<textfield id="cameraPixelSizeTextField" />
+
+							<label text="Magnification" id="magnificationLabel" />
+							<combobox id="magnificationComboBox" />
+						</panel>
+					</panel>
+					<glue />
+					<panel layout="BorderLayout(10,10,10,10)">
+						<radiobutton text="I know the Voxel size of the image" action="onModeChanged" constraints="BorderLayout.NORTH" id="advandedModeRadioButton"/>
+						<panel layout="GridLayout(3,2,10,10)" constraints="BorderLayout.CENTER">
+
+
+							<!-- <togglebutton text="Advanced settings" id="advancedSettingsToggleButton" 
+								action="onModeChanged"/> -->
+
+
+							<label text="Voxel Width (µm) : " id="pixelWidthLabel" />
+							<textfield id="pixelWidthTextField" action="onModeChanged" />
+
+							<label text="Voxel Height (µm) : " id="pixelHeightLabel" />
+							<textfield id="pixelHeightTextField" />
+
+							<label text="Voxel Depth (µm ) : " id="pixelDepthLabel" />
+							<textfield id="pixelDepthTextField" />
+						</panel>
+					</panel>
+					
+				</vbox>
+			</panel>
+		</hbox>
+
+		<vbox constraints="BorderLayout.SOUTH">
+			<label id="helpTitleLabel" font="Arial-22-Bold" text="Title" />
+			<label id="helpTextLabel" text="A lot of things to say" />
+		</vbox>
+
+	</panel>
+
+
+
+	<panel layout="FlowLayout(FlowLayout.TRAILING)" constraints="BorderLayout.SOUTH"
+		border="EmptyBorder(10,10,10,10)">
+		<button text="Continue" id="validateButton" action="validateWindow" />
+		<label text="  " />
+	</panel>
+
+</frame>

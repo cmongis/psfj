@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<panel id="mainPanel" layout="BorderLayout(10,10,10,10)">
+
+
+	<hbox constraints="BorderLayout.NORTH">
+		<button text="Add image stack" action="openImage" id="openButton" />
+		<label text="     ... or drag-and-drop it into this window." />
+	</hbox>
+	<panel layout="BorderLayout" constraints="BorderLayout.WEST">
+		<scrollpane constraints="BorderLayout.CENTER" border="EmptyBorder(10,10,10,10)">
+			<list   id="listContainer" />
+		</scrollpane>
+		<panel constraints="BorderLayout.SOUTH" layout="FlowLayout(FlowLayout.CENTER)">
+			<button text="Remove stack from analysis" action="onDeleteBead" />
+		</panel>
+	</panel>
+	
+	<vbox constraints="BorderLayout.CENTER">
+		
+		
+		<vbox constraints="BorderLayout.EAST" id="infoContainer" visible="false">
+			<label constraints="BorderLayout.WEST" id="infoLabel" text="now you see me" setHorizontalTextPosition="JLabel.LEFT"/>
+		</vbox>
+		
+		<panel  id="analysisModePanel" setMinimumSize="400,300">
+		<layout type="FormLayout" columns="left:pref, 3dlu, pref, 3dlu, left:pref" rows="p, 3dlu, p , 3dlu, p, 7dlu, p, 3dlu, p, 3dlu , p, 3dlu" />
+			
+		
+			
+			<label constraints="1,1,1,1" text="Specify the analysis type :                            " font="Arial-BOLD-14"  />
+			<buttongroup  id="modeRadioGroup" border="EmptyBorder(10,10,10,30)" >
+				<radiobutton constraints="1,3,1,1" id="singleChannelRadio"  text="Single-color analysis  : cumulative analysis of all beads of all files" actionCommand="single channel" action="onModeChanged" /> 
+				<radiobutton constraints="1,5,1,1" id="dualChannelRadio" text="Dual-color analysis : images from different wavelengths are compared" actionCommand="dual channel" action="onModeChanged" />
+			</buttongroup>
+			
+			
+			<label constraints="1,7,5,1" text="Provide center emission wavelengths for the two color-channels : " id="wavelengthLabel"/>
+			
+			<panel id="wavelengthListContainer"  constraints="1,9,1,1" >
+					<layout type="FormLayout" columns="left:pref,3dlu,pref,3dlu,left:pref" rows="p,3dlu,p,3dlu" />
+			</panel>
+			
+		</panel>
+			
+		
+	
+	</vbox>
+	
+	
+</panel>
