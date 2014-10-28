@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<frame id="mainFrame" >
+	<panel layout="BorderLayout">
+		<label text="Hello World" id="myLabel" constraints="BorderLayout.NORTH"></label>
+		<button id="myButton" action="doSomething" constraints="BorderLayout.SOUTH" text="Click me"></button>
+	</panel>
+	
+</frame>

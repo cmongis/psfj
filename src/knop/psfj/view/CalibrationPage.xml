@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<panel id="mainPanel" layout="BorderLayout">
+	<panel layout="BorderLayout" constraints="BorderLayout.WEST">
+
+		<hbox constraints="BorderLayout.CENTER">
+			<panel  border="TitledBorder( Microscope settings )" layout="BorderLayout">
+				<panel  layout="GridLayout(6,2,10,10)" constraints="BorderLayout.NORTH" border="EmptyBorder(5,5,5,5)">
+					<label text="Objective/Microscope id. : " id="microscopeIdLabel" />
+					<textfield id="microscopeIdTextField" setColumns="6" />
+					<label text="Emission wavelength (nm) : " id="lambdaLabel" />
+					<textfield id="lambdaTextField" setColumns="6"/>
+					<label text="NA of objective : " />
+					<textfield id="naTextField" setColumns="6"/>
+
+					<label text="Refractive index : " id="refractionIndiceLabel" />
+					<textfield id="refractionIndiceTextField" setColumns="6"/>
+
+					<label text="Bead diameter (nm) : " id="beadDiameterLabel" />
+
+					<textfield id="beadDiameterTextField" setColumns="6" />
+					
+					
+				</panel>
+				<panel constraints="BorderLayout.SOUTH" layout="BorderLayout" border="EmptyBorder(5,5,5,5)">
+					<panel constraints="BorderLayout.CENTER" layout="GridLayout(5,2,5,5)">
+							<label text="Expected values" font="-22-Bold" />
+							<label text="" />
+							<label text="FWHMx,y :" />
+							<label text="0.0" id="fwhmXYLabel" />
+							<label text="FWHMz : " />
+							<label text="0.0" id="fwhmZLabel" />
+							<!--<label text="Resolution (xy / z): " />
+							<label text="0.0" id="resolutionLabel" />-->
+							<label text="Bead diam./FWHMx,y :" />
+							<label text="0.0" id="beadDiamOverFWHMXY" />
+					</panel>
+					<label constraints="BorderLayout.EAST" id="imageLabel" />
+				</panel>
+			</panel>	
+			
+			
+				
+				
+				
+			
+			<glue />
+			<panel border="TitledBorder( Calibration )" >
+				<vbox border="EmptyBorder(5,5,5,5)">
+					
+					<panel layout="BorderLayout(10,10,10,10)">
+						<radiobutton text="I don't know the voxel size of the image stack."
+							constraints="BorderLayout.NORTH" action="onModeChanged" id="easyModeRadioButton"/>
+						<panel layout="GridLayout(4,2,10,10)" constraints="BorderLayout.CENTER">
+							<!-- <label text="Units" id="unitLabel" visible="false" /> -->
+							<!-- <combobox id="unitComboBox" visible="false"/> -->
+								
+							<label id="spaceBetweenStacksLabel" text="Space between z-planes (µm) : " />
+							<textfield id="spaceBetweenStacksTextField" columns="5" />
+							<label id="cameraPixelSizeLabel" text="Pixel size of the camera( µm) :" />
+							<textfield id="cameraPixelSizeTextField" columns="5" />
+							<label text="Total magnification : " id="magnificationLabel" />
+							<hbox>
+							<textfield id="magnificationComboBox" setColumns="6" />
+							<label text=" X  e.g.  60X * 1.5 = 90     " />
+							</hbox>
+						</panel>
+					</panel>
+					<glue />
+					<panel layout="BorderLayout(10,10,10,10)">
+						<radiobutton text="I know the voxel size of the image :" action="onModeChanged" constraints="BorderLayout.NORTH" id="advandedModeRadioButton"/>
+						<panel layout="GridLayout(3,2,10,10)" constraints="BorderLayout.CENTER">
+
+
+							<!-- <togglebutton text="Advanced settings" id="advancedSettingsToggleButton" 
+								action="onModeChanged"/> -->
+
+
+							<label text="Voxel width in µm (x-Axis) : " id="pixelWidthLabel" />
+							<textfield id="pixelWidthTextField" action="onModeChanged" />
+							
+							
+							<label text="Voxel height in µm (y-Axis) : " id="pixelHeightLabel" />
+							<textfield id="pixelHeightTextField" />
+
+							<label text="Voxel depth in µm (z-Axis) :  " id="pixelDepthLabel" />
+							<textfield id="pixelDepthTextField" />
+						</panel>
+					</panel>
+					
+				</vbox>
+			</panel>
+		</hbox>
+
+		<vbox constraints="BorderLayout.SOUTH">
+			<label id="helpTitleLabel" font="Arial-22-Bold" text="" />
+			<label id="helpTextLabel" text="" />
+		</vbox>
+
+	 </panel>
+</panel>
+

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<panel id="panel" layout="BorderLayout">
+<vbox border="EmptyBorder(5,5,5,5)" constraints="BorderLayout.CENTER">
+	<label id="titleLabel" font="Helvetica-BOLD-14"/>
+	<label id="statusLabel" font="Helvetica-NORMAL-12"/>
+	<label id="otherLabel"  font="Helvetica-NORMAL-12" text = ""/>
+
+	<label text = " " />
+	<glue />
+	<progressbar id="progressbar" />
+</vbox>
+
+<panel id="previewContainer" layout="BorderLayout" constraints="BorderLayout.EAST">
+
+</panel>
+
+</panel>

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<panel id="mainPanel" layout="BorderLayout">
+	
+		<panel  constraints="BorderLayout.CENTER" >
+
+			<layout type="FormLayout"
+			columns="left:pref, 3dlu, pref, 10dlu, left:pref, 3dlu, pref, 3dlu, right:pref"
+			rows="p, 3dlu, p, 3dlu, p, 3dlu, p,3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu" />
+			
+			<label constraints="1,1,2,1" text="Microscope Setting"/>
+			<label constraints="1,3" text="Objective Identifier : " id="microscopeIdLabel" />
+			<textfield constraints="3,3" id="microscopeIdTextField" />
+			
+			
+			<label constraints="1,5" text="Emission WaveLength (nm) : " id="lambdaLabel" />
+			<textfield constraints="3,5" id="lambdaTextField" />
+			
+			
+			<label constraints="1,7" text="NA of objective : " />
+			<textfield constraints="3,7" id="naTextField" />
+
+			<label constraints="1,9" text="Refractive Index of immersion medium : " id="refractionIndiceLabel" />
+			<textfield constraints="3,9" id="refractionIndiceTextField" />
+
+			<label constraints="1,11" text="Bead Diameter * (µm) : " id="bidSizeLabel" />
+			<textfield constraints="3,11" id="bidSizeTextField" />
+					
+			<label text="Theoritical Values" font="-22-Bold" constraints="1,13,2,1" />
+			
+			<label text="FWHM X,Y :" constraints="1,15"/>
+			<label text="0.0" id="fwhmXYLabel" constraints="3,15" />
+			<label text="FWHM Z : " contraints="1,17"/>
+			<label text="0.0" id="fwhmZLabel" constraints="3,17" />
+			
+			<label text="Bead Diam. / FWHM X,Y : " constraints="1,19"/>
+			<label text="0.0" id="beadDiamOverFWHMXY" constraints="3,19"/>
+			
+		
+			
+		</panel>
+		
+		
+		<vbox constraints="BorderLayout.SOUTH">
+			<label id="helpTitleLabel" font="Arial-22-Bold" text="Title" />
+			<label id="helpTextLabel" text="A lot of things to say" />
+		</vbox>
+		
+</panel>
+

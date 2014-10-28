@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<vbox constraints="BorderLayout.WEST" id="mainPanel">
+
+
+	<vbox border="EmptyBorder(10,10,10,30)">
+		<label text="What do I want to do ? " />
+		<buttongroup id="doExportGroup" border="EmptyBorder(10,10,10,30)">
+			<radiobutton id="doNotExportRadio" text="Just visualize the results (and maybe save them later)."  />
+			<radiobutton id="doExportRadio" text="Vizualization of the results ans save a full report."/>
+			
+		</buttongroup>
+	</vbox>
+	
+	
+	
+	<!--
+	<vbox border="EmptyBorder(10,10,10,30)">
+		<label text="How do you want to export the individual bead pdf report ?" />
+	
+		<buttongroup id="multipleExportGroup">
+			<radiobutton id="multipleExportRadio" text = "Create a PDF for each bead" action="onExportChanged"/>
+			<radiobutton id="singleExportRadio" text="Create a singe PDF that contains all the bead PSF Reports" action="onExportChanged"/>
+		</buttongroup>
+	</vbox>
+	-->
+	
+	<vbox border="EmptyBorder(10,10,10,10,10)" id="locationVBox">
+	
+		<label text='Save Location : ' id="locationLabel"/>
+		<label text='  ' />
+		<button text="Change location" action="onChangeLocationButtonPressed"/>
+		
+	</vbox>
+	
+</vbox>

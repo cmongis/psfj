@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vbox id="mainPanel">
+	<panel layout="BorderLayout(10,10,10,10,10)" id="secondPanel">
+		<list id="beadImageList" constraints="BorderLayout.WEST"/>
+		
+		<panel constraints="BorderLayout.EAST" alignementX="1.0" layout="Borderlayout(10)">
+			<slider id="focusSlider" constraints="BorderLayout.CENTER"/>
+			<vbox constraints="BorderLayout.SOUTH">
+			<label id="focusSliderLabel" />
+			<button text="Auto" action="onAutoButtonPressed" />
+			</vbox>
+		</panel>	
+	</panel>
+	
+</vbox>
