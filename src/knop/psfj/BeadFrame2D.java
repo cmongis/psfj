@@ -27,8 +27,9 @@ import ij.process.ShortProcessor;
 
 import java.awt.Color;
 import java.awt.Rectangle;
+import knop.psfj.resolution.Gaussian2DFit.GaussianFit;
 
-import knop.psfj.resolution.GaussianFit;
+
 import knop.psfj.utils.MathUtils;
 import knop.psfj.view.Message;
 // TODO: Auto-generated Javadoc
@@ -243,7 +244,7 @@ public class BeadFrame2D extends BeadFrame {
 					sx = sy;
 					sy = st;
 
-					// theta -= Math.PI/2;
+					
 				}
 
 				// retrieving a,b,c parameters of the 2D Gaussian
@@ -259,7 +260,7 @@ public class BeadFrame2D extends BeadFrame {
 				double fwhmY = sy * getCalibration().pixelHeight * 2 * SQRT2LN2;
 
 				double intensityMean = ip.getStatistics().mean;
-				double background = fitParams[GaussianFit.BGR];
+				
 				
 				// fitting score
 				double rms = fit.getRMS();
@@ -357,76 +358,8 @@ public class BeadFrame2D extends BeadFrame {
 	public double getTheta() {
 		return theta;
 	}
-	/*
-	public static void analyseBeadImage(String path, int threshold,
-			int frameSize, DataSet dataset, String id) {
 
-		BeadImage image = new BeadImage(path);
-		image.workFromMemory();
-		analyseBeadImage(image, threshold, frameSize, dataset, id);
-	}
-
-	public static void analyseFolder(String path, String filter) {
-
-		File folder = new File(path);
-
-		String fileName = folder.getAbsolutePath() + "_" + "benchmark_"
-				+ new Date().toLocaleString().replace(" ", "_") + ".csv";
-
-		DataSet dataset = new DataSet();
-
-		for (File f : folder.listFiles()) {
-
-			if (f.getName().endsWith(".tif")) {
-				System.out.println(f.getName());
-
-				dataset.addValue("id", f.getName().replace(".tif", ""));
-				getExpectedValueFromName(f.getName(), "sigma_x", dataset);
-				getExpectedValueFromName(f.getName(), "theta", dataset);
-				getExpectedValueFromName(f.getName(), "asymmetry", dataset);
-				analyseBeadImage(f.getAbsolutePath(), -1, 12, dataset, f.getName()
-						.replace(".tif", ""));
-				TextUtils.writeStringToFile(fileName, dataset.exportToString(),
-						false);
-
-			}
-
-		}
-
-		FileUtils.openFolder(fileName);
-
-	}
-
-	public static void getExpectedValueFromName(String name, String value,
-			DataSet dataSet) {
-		Pattern p = Pattern.compile(value + "=([\\-\\d]*\\.\\d*)");
-		Matcher m = p.matcher(name);
-		if (m.find()) {
-			dataSet.addValue(value + "_expected", m.group(1));
-		}
-
-	}
-
-	public static void addNoise(BeadImage image, double noise) {
-		ImageStack stack = image.getStack();
-
-		// Poisson_Noise poissonNoise = new Poisson_Noise();
-
-		for (int i = 1; i != image.getStackSize() + 1; i++) {
-			ImageProcessor ip = stack.getProcessor(i);
-			Randomizer ran = new Randomizer();
-
-			ip.multiply(1.0 / noise);
-			Image img = Image.wrap(new ImagePlus("", ip));
-			ran.poisson(img, 50000, 2, false);
-			// ip.add(100);
-			// ran.gaussian(img, 0.0, 10, 0, false);
-			// stack.addSlice("", ip.convertToShort(true), i);
-
-		}
-
-	}
-	*/
+	
 	/**
 	 * Sqr.
 	 *
