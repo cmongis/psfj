@@ -1,0 +1,25 @@
+#!/bin/bash
+#APP_HOME=$(readlink -f $0)
+
+BIT_NUMBER=$(getconf LONG_BIT)
+
+PLATFORM=$(uname);
+HEAPSIZE=1500
+if [[ $PLATFORM == "Linux" ]]; then
+	HEAPSIZE=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+	let 'HEAPSIZE=(HEAPSIZE/1000-500)'
+fi
+if [[ $PLATFORM == "Darwin" ]]; then
+	HEAPSIZE=$(sysctl -n hw.memsize)
+	let 'HEAPSIZE=(HEAPSIZE/1000/1000-500)'
+fi
+
+if [[ $BIT_NUMBER == "32" ]]; then
+	HEAPSIZE="1500";
+fi
+
+echo $HEAPSIZE
+
+APP_HOME=$(dirname $0)
+java -XX:+UseParallelGC -Xms1000M -Xmx${HEAPSIZE}M -jar "$APP_HOME/PSFj.jar"
+
