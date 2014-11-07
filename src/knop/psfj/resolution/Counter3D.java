@@ -943,6 +943,9 @@ public class Counter3D extends Observable{
            max=Math.max(max, currVal);
        }
        
+       
+       setProgress(33);
+       
        if (max<256) imgDepth=8;
        ImagePlus img=NewImage.createImage(title, width, height, nbSlices, imgDepth, 1);
        
@@ -965,7 +968,9 @@ public class Counter3D extends Observable{
                    index++;
                }
            }
+           
        }
+       setProgress(66);
        setStatus("");
        
        index=0;
@@ -992,6 +997,7 @@ public class Counter3D extends Observable{
        
        img.setCalibration(cal);
        img.setDisplayRange(min, max);
+       setProgress(100);
        return img;
    }
 

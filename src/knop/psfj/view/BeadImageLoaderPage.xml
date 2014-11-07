@@ -3,11 +3,13 @@
 
 <panel id="mainPanel" layout="BorderLayout(10,10,10,10)">
 
-
-	<hbox constraints="BorderLayout.NORTH">
+        <panel layout="BorderLayout" constraints="BorderLayout.NORTH">
+	<hbox constraints="BorderLayout.CENTER">
 		<button text="Add image stack" action="openImage" id="openButton" />
 		<label text="     ... or drag-and-drop it into this window." />
 	</hbox>
+         <button constraints="BorderLayout.EAST" text="Advanced settings..."  action="showAdvancedSettings"/>
+        </panel>
 	<panel layout="BorderLayout" constraints="BorderLayout.WEST">
 		<scrollpane constraints="BorderLayout.CENTER" border="EmptyBorder(10,10,10,10)">
 			<list   id="listContainer" />
@@ -19,6 +21,9 @@
 	
 	<vbox constraints="BorderLayout.CENTER">
 		
+            <hbox>
+               
+            </hbox>
 		
 		<vbox constraints="BorderLayout.EAST" id="infoContainer" visible="false">
 			<label constraints="BorderLayout.WEST" id="infoLabel" text="now you see me" setHorizontalTextPosition="JLabel.LEFT"/>

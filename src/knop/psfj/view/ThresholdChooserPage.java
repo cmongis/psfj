@@ -572,30 +572,7 @@ public class ThresholdChooserPage extends WizardPage {
 		updateImage();
 		
 		canvas.fitImageToCanvas();
-		/*
-		updateImage();
-		updateAllPreviewsAsync();
-		updateCurrentPreviewAsync();
-		new Thread() {
-			public void run() {
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				
-				
-				canvas.fitImageToCanvas();
-				canvas.repaint();
-				//if(beadImageList.getSelectedIndex() == -1) beadImageList.setSelectedIndex(0);
-				//updateSliders();
-				
-			}
-		}.start();
 		
-		*/
 	
 	}
 
@@ -815,48 +792,7 @@ public class ThresholdChooserPage extends WizardPage {
 				value.setSelected(isSelected);
 				return value.getView();
 			
-			/*
 			
-			try {
-
-				JLabel label = new JLabel();
-
-				String background;
-				BeadImage beadImage = null;
-
-				if (value instanceof BeadImage) {
-					beadImage = (BeadImage) value;
-				}
-
-				if (beadImage == null) {
-					return label;
-				}
-
-				String name = beadImage.getImageName();
-				int beadFound = beadImage.getDotNumber();
-
-				String status = beadImage.getStatus();
-
-				if (!isSelected) {
-					background = "white";
-				} else {
-					background = "#5555FF";
-				}
-
-				String text = String.format("<html>"
-						+ "<div style='width:100px;padding:5px;background:%s'>"
-						+ "<b>%s</b><br><i>Beads found : %d<br>%s" + "</div>"
-						+ "</html>", background, name, beadFound, status);
-
-				label.setText(text);
-
-				return label;
-
-			} catch (Exception e) {
-				return new JLabel("...");
-			}
-
-		}*/
 		}
 	};
 
@@ -877,17 +813,7 @@ public class ThresholdChooserPage extends WizardPage {
 			if(getBeadImage().getThresholdValue() != value) {
 				manager.setThresholdValue(displayedImage, value);
 				manager.updatePreviewAsync();
-			}
-			
-			/*
-			if(manager.getAnalysisType() == manager.SINGLE_CHANNEL && manager.getThresholdValue() != value) {
-				manager.setThresholdValue(value);
-				manager.updatePreviewAsync();
-			}
-			else if(getBeadImage().getThresholdValue() != value){
-				getBeadImage().setThresholdValue(value);
-				manager.updatePreviewAsync();
-			}*/
+                        }
 			
 		}
 		

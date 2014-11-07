@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<frame title = "Advanced Settings" id="frame" size="500,300">
+    
+    <panel layout="BorderLayout" border="EmptyBorder(10,10,10,10)">
+    
+        <label id="titleLabel" text="Advanced Settings" constraints="BorderLayout.NORTH" />    
+    
+        <panel  setMinimumSize="400,200" constraints="BorerLayout.CENTER"  border="EmptyBorder(10,10,10,10)">
+            <layout type="FormLayout" columns="left:100dlu, 2dlu, left:150dlu" rows="p,p, 3dlu, p , 3dlu, p, 7dlu, p, 3dlu, p, 3dlu , p, 3dlu" />
+			
+            <label constraints="1,1,1,1" text="Use 3D localization" />
+            <checkbox id="localizationCheckBox" constraints="3,1,1,1" text="Yes" />
+            <label constraints="1,2,3,1" text="Warning : takes more time, more RAM, and invalidates the planarity map." font="Font.SERIF-bold-12" foreground="Color.GRAY" />
+			
+        </panel>
+        
+        
+        <hbox constraints="BorderLayout.SOUTH">
+            <button text="Close" action="close"/>
+        </hbox>
+        
+    </panel>
+</frame>

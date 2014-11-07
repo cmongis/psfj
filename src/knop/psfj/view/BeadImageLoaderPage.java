@@ -108,6 +108,9 @@ public class BeadImageLoaderPage extends WizardPage {
 	String warning = TextUtils.readTextRessource(this, "/knop/psfj/view/JavaMemoryWarning.html");
 	
 	
+        AdvancedSettingWindow advancedSettings = new AdvancedSettingWindow();
+        
+        
 	/**
 	 * The main method.
 	 *
@@ -166,14 +169,17 @@ public class BeadImageLoaderPage extends WizardPage {
 	/* (non-Javadoc)
 	 * @see knop.psfj.view.WizardPage#init()
 	 */
+        @Override
 	public void init() {
 		try {
 			engine = new SwingEngine(this);
 			engine.render("knop/psfj/view/BeadImageLoaderPage.xml").setVisible(
 					true);
 		} catch (Exception e) {
+                        e.printStackTrace();
+                       
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 		setTitle("Open stacks");
@@ -212,8 +218,17 @@ public class BeadImageLoaderPage extends WizardPage {
 			infoLabel.setText(String.format(body,warning,faq));
 		else
 			infoLabel.setText(String.format(body,faq,""));
-
+                
+                
+                advancedSettings.setManager(getBeadImageManager());
+                
 	}
+        
+        
+        public void showAdvancedSettings() {
+            advancedSettings.show();
+        }
+        
 
 	/* (non-Javadoc)
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
@@ -391,8 +406,7 @@ public class BeadImageLoaderPage extends WizardPage {
 			row += 2;
 
 		}
-		// wavelengthListContainer.add(new XGlue());
-		// wavelengthListContainer.setVisible(true);
+		
 	}
 
 	/**
@@ -420,37 +434,6 @@ public class BeadImageLoaderPage extends WizardPage {
 		
 		dualChannelRadio.setEnabled(!moreThanTwo);
 		
-		/*
-		
-		if (isSingleMode()) {
-
-			singleChannelRadio.setSelected(true);
-
-			wavelengthListContainer.setVisible(false);
-			wavelengthLabel.setVisible(false);
-
-		} else {
-
-			// infoLabel.setText(TextUtils.readTextRessource(this,
-			// "/info2.html"));
-			dualChannelRadio.setEnabled(getBeadImageManager().countBeadImage() == 2);
-			dualChannelRadio.setSelected(getBeadImageManager().isDualColorAnalysis());
-			//dualChannelRadio.setSelected(getBeadImageManager().countBeadImage() == 2);
-			
-			wavelengthLabel.setVisible(true);
-			wavelengthListContainer.setVisible(true);
-			updateWaveLengthList();
-		}
-
-		if (getBeadImageManager().getBeadImageList().size() != 2 ) {
-			showAnalysisTypePanel(false);
-			return;
-		}
-
-		else {
-			showAnalysisTypePanel(true);
-		}
-		 */
 	}
 
 	/**

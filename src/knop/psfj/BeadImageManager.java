@@ -20,7 +20,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import knop.psfj.exporter.CsvExporter;
-import knop.psfj.exporter.HTML5AnalyzerExporter;
 import knop.psfj.exporter.PDFExporter;
 import knop.psfj.exporter.PDFSumUpExporter;
 import knop.psfj.graphics.AsymmetryHeatMap;
@@ -34,6 +33,9 @@ import knop.psfj.graphics.ShiftHeatMap;
 import knop.psfj.graphics.ThetaHeatMap;
 import knop.psfj.graphics.ZProfileHeatMap;
 import knop.psfj.heatmap.HeatMapGenerator;
+import knop.psfj.locator.BeadLocator;
+import knop.psfj.locator.BeadLocator2D;
+import knop.psfj.locator.BeadLocator3D;
 import knop.psfj.resolution.Microscope;
 import knop.psfj.utils.FileUtils;
 import knop.psfj.utils.MathUtils;
@@ -126,6 +128,14 @@ public class BeadImageManager extends Observable implements Observer {
 	/** The current type of the analysis (single or dual-channel) */
 	protected int analysisType = DUAL_CHANNEL;
 
+        
+        public static int LOCATOR_2D = 0;
+        public static int LOCATOR_3D = 1;
+        
+        
+        protected BeadLocator locator = new BeadLocator2D();
+        
+        
 	/**
 	 * The main method.
 	 * 
@@ -192,7 +202,7 @@ public class BeadImageManager extends Observable implements Observer {
 
 		// add an bead image to the list
 		beadImageList.add(beadImage);
-
+                beadImage.setLocator(getLocator());
 		if (exportDirectory == null) {
 			exportDirectory = beadImage.getImageFolder();
 		}
@@ -1966,7 +1976,7 @@ public class BeadImageManager extends Observable implements Observer {
 
 		for (BeadImage image : getBeadImageList()) {
 			image.cleanMemory(image.CLEAN_ALL);
-			image.getBeadFrameList();
+			//image.getBeadFrameList();
 		}
 	}
 
@@ -2192,6 +2202,25 @@ public class BeadImageManager extends Observable implements Observer {
 			notifyObservers(new Message(this, "analysis type changed"));
 		}
 	}
+        
+       
+        
+        public BeadLocator getLocator() {
+            return locator;
+        }
+        
+        
+        public void setLocator(BeadLocator locator) {
+            
+            System.out.println("Updating model to "+locator.getClass().getSimpleName());
+            this.locator = locator;
+            for(BeadImage image : getBeadImageList()) {
+                image.setLocator(locator);
+            }
+            
+            
+            
+        }
 
 	/**
 	 * Gets the calibration of a defined bead image from its id
