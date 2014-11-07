@@ -3,7 +3,7 @@
   <dontWrapJar>true</dontWrapJar>
   <headerType>gui</headerType>
   <jar>PSFj.jar</jar>
-  <outfile>/Users/cyril/PSFj Builds/files/psfj.exe</outfile>
+  <outfile>/home/cyril/Code/PSFj/psfj/psfj/packager/files/psfj.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
