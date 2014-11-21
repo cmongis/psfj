@@ -56,7 +56,7 @@ cp -Rv $FILES/psfj build/PSFj.app/Contents/MacOS/
 echo "Zipping MacOS Bundle"
 #going to the build folder to get the zip hierarchy right
 cd build
-zip -ur ../$MAC_NAME.zip PSFj.app
+zip -ur ../build/$MAC_NAME.zip PSFj.app
 cd ..
 #going to the file folder
 cd $FILES
@@ -65,7 +65,7 @@ zip -ur ../build/$MAC_NAME.zip *.pdf;
 
 
 #copying and creating a new build
-cp $MAC_NAME.zip build/psfj_macos_latest.zip
+cp ../build/$MAC_NAME.zip ../build/psfj_macos_latest.zip
 
 cd ..
 
