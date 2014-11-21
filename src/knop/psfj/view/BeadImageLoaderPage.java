@@ -301,7 +301,7 @@ public class BeadImageLoaderPage extends WizardPage {
 			return false;
 		}
 
-		return true && getBeadImageManager().isReady();
+		return true && getBeadImageManager().isReady() && !getBeadImageManager().isImageLoading();
 	}
 
 	/* (non-Javadoc)

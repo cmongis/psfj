@@ -484,7 +484,7 @@ public class BeadImageManager extends Observable implements Observer {
 
 		// image yet to load is incremented (this method can be called simoustaneouly so precaution must be taken);
 		imagesYetToLoad++;
-
+                
 		// making sure that only one image is analyzed at once
 		synchronized (readingLock) {
 			
@@ -496,8 +496,10 @@ public class BeadImageManager extends Observable implements Observer {
 				//creating a new bead image
 				beadImage = new BeadImage();
 				
+                                
+                                
 				// setting the image as valid
-				beadImage.isValid = true;
+				beadImage.isOpening = true;
 				
 				// setting the file address in the bead image
 				beadImage.setFileAddress(fileAddress);
@@ -508,6 +510,8 @@ public class BeadImageManager extends Observable implements Observer {
 				
 				// read the bead image properties from the disk (width, height etc.)
 				beadImage.readWidthAndHeightFromDisk();
+                                
+                                beadImage.isOpening = false;
 
 			} else {
 				// display the problem
@@ -2483,5 +2487,14 @@ public class BeadImageManager extends Observable implements Observer {
 	public void setReady(boolean isReady) {
 		this.isReady = isReady;
 	}
+        
+        public boolean isImageLoading() {
+            for(BeadImage image : getBeadImageList()) {
+                if(image.isOpening == true) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
 }
