@@ -43,7 +43,7 @@ public class BeadLocator2D extends BeadLocator {
         ImageProcessor mask = null;
         ManyBlobs blobs = null;
 
-        for (int i = 4; i <= 30 && blobs == null; i += 3) {
+        for (int i = 4; i <= 50 && blobs == null; i += 5) {
             try {
                 mask = getImage().getSegmentedImage();
 
@@ -58,8 +58,8 @@ public class BeadLocator2D extends BeadLocator {
 
             } catch (NullPointerException e) {
                 blobs = null;
-
-                System.out.println(getImage().getMiddleImage().getMax());
+                
+                System.out.println("middleImage.getMax()"+getImage().getMiddleImage().getMax());
 
                 System.err.println("Detection error.\nThreshold :"
                         + getImage().getThresholdValue());
@@ -135,9 +135,9 @@ public class BeadLocator2D extends BeadLocator {
                     if (r2.contains(r.getCenterX(), r.getCenterY())
                             && !toRemove.contains(r) && !toRemove.contains(r2)) {
                         double maxR1 = image.getBeadMaxIntensity(getEnlargedFrame(
-                                getBeadLocation().get(i), 1));
+                                beadLocation.get(i), 1));
                         double maxR2 = image.getBeadMaxIntensity(getEnlargedFrame(
-                                getBeadLocation().get(j), 1));
+                                beadLocation.get(j), 1));
                         // System.out.println(maxR1 + " versus " + maxR2);
                         if (maxR1 < maxR2) {
                             toRemove.add(r);

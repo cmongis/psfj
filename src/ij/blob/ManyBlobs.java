@@ -51,9 +51,9 @@ public class ManyBlobs extends ArrayList<Blob> {
 		this.imp = imp;
 		ImageStatistics stats = imp.getStatistics();
 		
-		System.out.println(stats.histogram[0]);
-		System.out.println(stats.histogram[255]);
-		System.out.println(stats.pixelCount);
+		System.out.println("stats.histogram[0] : " + stats.histogram[0]);
+		System.out.println("stats.histogram[255] : " + stats.histogram[255]);
+		System.out.println("stats.pixelCount : " + stats.pixelCount);
 		
 		if ((stats.histogram[0] + stats.histogram[255]) != stats.pixelCount) {
 			throw new java.lang.IllegalArgumentException("Not a binary image");

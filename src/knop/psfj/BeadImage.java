@@ -122,7 +122,7 @@ public class BeadImage extends Observable {
     /**
      * The threshold level for the background substraction.
      */
-    protected int thresholdValue = -1;
+    protected int thresholdValue = NOT_SET;
 
     /**
      * The size of the area extracted for each bead.
@@ -397,25 +397,11 @@ public class BeadImage extends Observable {
     public static void main(String[] argv) {
 
         BeadImage startImage = new BeadImage(
-                "/home/cyril/test_img/5/GFP60x-1_R3D.tif");
+                "/Users/cyril/Downloads/ApoTIRF_60x_dual_channel/ch2_ApoTIRF_60x.tif");
 
         startImage.workFromMemory();
 
-        /*
-         * ImageProcessorReader reader = new ImageProcessorReader(); try {
-         * reader.setId("/media/cyril/KnopDrive1/klaus_gfp_8bits.tif");
-         * System.out.println(); reader.openProcessors(0);
-         * System.out.println("Done");
-         * 
-         * } catch (FormatException e) { // TODO Auto-generated catch block
-         * e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated
-         * catch block e.printStackTrace(); } System.exit(0);
-         */
-		// startImage.workFromMemory();
-        // startImage.autoFocus();
-		// startImage.setThresholdValue(200);
-        // startImage.setBeadEnlargement(30);
-        // startImage.getDotFrames();
+     
         startImage.autoFocus();
         startImage.autoThreshold();
         startImage.setFrameSize(20);
@@ -424,25 +410,9 @@ public class BeadImage extends Observable {
         //startImage.buildStackList();
         processor.process();
         processor.filter();
-        System.out.println(startImage.getSignalToNoiseRatio());
+        System.out.println("signal to noise ration : "  + startImage.getSignalToNoiseRatio());
 
-		// startImage.buildStackList();
-
-        /*
-         * for(int i = 0;i!= startImage.getDotNumber();i++) {
-         * System.out.println("processing "+i+"..."); PsfProfiler p = new
-         * PsfProfiler(new ImagePlus("",startImage.getStack(i)),true);
-         * 
-         * //IJ.saveAsTiff(p.getImagePlus(), "/home/cyril/test/beads/"+i+".tif");
-         * }
-         */
-		// System.out.println("starting 3d segmentation");
-		// System.out.println(startImage.getFielOfViewArea());
-        // System.out.println("density :");
-        // System.out.println(startImage.getBeadDensity());
-        // System.out.println(startImage.getBeadStats());
-		// "/media/Data/Knop/Patrick/100x_512x512c1.tif");
-        // System.out.println(startImage.getStackSize());
+		
     }
 
     /**
@@ -1108,6 +1078,7 @@ public class BeadImage extends Observable {
     public synchronized ArrayList<Rectangle> getBeadLocation() {
         if (beadLocation == null) {
             beadLocation = getLocator().getBeadLocation();
+            System.out.println("beadLocation : "+beadLocation);
         }
         return beadLocation;
     }
@@ -1342,7 +1313,7 @@ public class BeadImage extends Observable {
      * @param ip the input image
      * @return the segmentation mask
      */
-    public ImageProcessor getSegmentationMask(ImageProcessor ip) {
+    private ImageProcessor getSegmentationMask(ImageProcessor ip) {
         return getSegmentationMask(ip, getThresholdValue());
     }
 
@@ -1354,7 +1325,7 @@ public class BeadImage extends Observable {
      * @return the segmentation mask
      */
     private ImageProcessor getSegmentationMask(ImageProcessor ip, int threshold) {
-
+        System.out.println("Getting segmentation mask with threshold : "+threshold);
         ImageProcessor mask = ip.duplicate();
 
         mask.threshold(threshold);
@@ -1364,10 +1335,10 @@ public class BeadImage extends Observable {
         int[] h = mask.getHistogram();
         for (int i = 0; i != h.length; i++) {
             if (h[i] > 0) {
-                System.out.println(i);
+                System.out.println("i : "+i);
             }
         }
-        System.out.println(mask);
+        System.out.println("mask : +" + mask);
         return mask;
     }
 
@@ -1519,7 +1490,7 @@ public class BeadImage extends Observable {
 
         double threshold = getAutoThreshold(10);
 
-        System.out.println("Auto detected threshold : " + getThresholdValue());
+        System.out.println("Auto detected threshold : " + threshold);
         setThresholdValue(MathUtils.round(threshold));
 
         setProgress(100, "Done.");

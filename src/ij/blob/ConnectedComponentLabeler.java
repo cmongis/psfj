@@ -120,6 +120,7 @@ public class ConnectedComponentLabeler {
 				}
 			}
 		}
+                System.out.println("Connected component finished.");
 		// printImage(labledImage);
 	}
 	
