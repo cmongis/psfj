@@ -35,7 +35,7 @@ public class PSFj {
 	 * @return the version
 	 */
 	public static String getVersion() {
-		return "2.5, build 235";
+		return "2.5, build 237";
 	}
 	
 	

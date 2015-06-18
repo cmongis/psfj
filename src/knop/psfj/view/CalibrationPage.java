@@ -20,18 +20,17 @@
 package knop.psfj.view;
 
 import ij.IJ;
+import ij.measure.Calibration;
 
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,10 +44,8 @@ import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.InputVerifier;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -491,8 +488,39 @@ public class CalibrationPage extends WizardPage {
 			microscope.calculateCalibrationFromPixelSize();
 			updateCalibrationView();
 		}
+                
+                
+                
+                
+                // checking the data quality
+                Calibration calibration = microscope.getCalibration();
+                
+                double[] pxWidth = new double[] { calibration.pixelWidth,calibration.pixelHeight,calibration.pixelDepth };
+                
+                boolean isCrappy = false;
+                for(int i = 0; i!=3;i++) {
+                    
+                    if(microscope.getTheoreticalResolution(i) < pxWidth[i] / 2) {
+                        isCrappy = true;
+                        break;
+                    }
+                    
+                    
+                }
+                
+                if(isCrappy) {
+                    setHelp("","<font color='red' size=16><b>Warning</b> : Insufficiant sampling !</font><br>The voxel size should be at least smaller than twice the expected resolution.");
+                }
+                else {
+                    setHelp("","");
+                }
+                
+                
 	}
 
+        
+        
+        
 	public double parseDouble(String doubleString) {
 		try {
 			return Double.parseDouble(doubleString);
