@@ -212,7 +212,8 @@ public class FileUtils {
 		} else {
 			JFileChooser fc = new JFileChooser();
 			fc.setDialogTitle(title);
-			fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                        
+			fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 			File fdir = null;
 			if (def != null)
 				fdir = new File(def);
