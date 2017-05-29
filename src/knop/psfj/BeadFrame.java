@@ -1045,6 +1045,11 @@ public class BeadFrame extends Observable {
 	 */
 
 	protected void getZprofileAndFit() {
+            
+                if(isFlat()) {
+                    return;
+                };
+            
 		ip.setCalibration(new Calibration());
 		ip.setRoi(new Line(0, center[1], ip.getWidth() - 1, center[1]));
 
@@ -1723,6 +1728,11 @@ public class BeadFrame extends Observable {
 		return stackSize;
 	}
 
+        
+        public boolean isFlat() {
+            return getSliceNumber() == 1;
+        }
+        
 	/**
 	 * Checks if is ignored.
 	 *

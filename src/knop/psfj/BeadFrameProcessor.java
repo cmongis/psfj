@@ -237,6 +237,7 @@ public class BeadFrameProcessor extends Observable implements Observer {
 				}
 				// but for z the threshold is 0.8
 				else {
+                                        if(bead.isFlat()) continue;
 					if (bead.getFittingGoodness(axe) < 0.8) {
 						isFittingValid = false;
 					}
@@ -286,10 +287,16 @@ public class BeadFrameProcessor extends Observable implements Observer {
 			/* filtering C parameter */
 
 			for (int axe = 0; axe != 3; axe++) {
+                            
+                                
+                            
 				// in case of 2D Fitting, there is no c parameters for x and y, so
 				// we skip those axis
 				if (bead instanceof BeadFrame2D && (axe == 0 || axe == 1))
 					continue;
+                                
+                                if( axe == 2 && bead.isFlat()) continue;
+                                
 				c = bead.getCParameter(axe);
 				cMin = bead.getResolution(axe) / 2;
 				cMax = axeSize[axe] - bead.getResolution(axe) / 2;
