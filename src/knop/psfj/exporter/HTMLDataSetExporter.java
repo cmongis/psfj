@@ -295,7 +295,7 @@ public class HTMLDataSetExporter {
 		result.append(TextUtils.readTextRessource(valueToReplace, "/mini-report.html",valueToReplace));
 		
 		
-		TextUtils.writeStringToFile("/home/cyril/test.html", result.toString(), false);
+		//TextUtils.writeStringToFile("/home/cyril/test.html", result.toString(), false);
 		
 		return result.toString();
 	}
