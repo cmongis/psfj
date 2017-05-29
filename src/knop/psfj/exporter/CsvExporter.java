@@ -83,7 +83,12 @@ public class CsvExporter {
 						PSFj.getColumnID(PSFj.R_COEFF_KEY, PSFj.X_AXIS,
 								PSFj.NOT_NORMALIZED, 0),
 						PSFj.getColumnID(PSFj.R_COEFF_KEY, PSFj.Z_AXIS,
-								PSFj.NOT_NORMALIZED, 0), PSFj.IS_FITTING_VALID}));
+								PSFj.NOT_NORMALIZED, 0)
+                                        , PSFj.IS_FITTING_VALID
+                                        ,PSFj.CENTROID_BRIGHTNESS_KEY
+                                        ,PSFj.FITTED_BRIGHTNESS
+                                        ,PSFj.FITTED_BACKGROUND
+                                }));
 
 		dualColorColumns = new ArrayList<String>(monocolorColumns);
 
