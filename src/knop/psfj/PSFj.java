@@ -96,7 +96,18 @@ public class PSFj {
 	/** The Constant SIGMA_Y_KEY. */
 	public final static String SIGMA_Y_KEY = "sigma y";
 	
-	
+	/** Centroid brightness */
+        public final static String CENTROID_BRIGHTNESS_KEY = "centroid brightness";
+        
+        /** Centroid brightness name */
+        public final static String CENTROID_BRIGHTNESS_NAME = "Centroid brightness";
+        
+        /** Fitted brightness */
+        public final static String FITTED_BRIGHTNESS = "Fitted Brightness(A)";
+        
+        /** Fitted background */
+        public final static String FITTED_BACKGROUND = "Fitted background(B)";
+        
 	/** The Constant NORMALIZED. */
 	public static final int NORMALIZED = 1;
 	

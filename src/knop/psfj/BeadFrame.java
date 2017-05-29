@@ -101,6 +101,10 @@ public class BeadFrame extends Observable {
 	/** Reference to the z dimension *. */
 	public static final int Z = 2;
 
+        public static final int A = 1;
+        
+        public static final int B = 0;
+        
 	/**
 	 * Stores the x profile, [0=x as a physical distance ,1=raw intensity,
 	 * 2=fitted data][pixel nb, from 0 to width-1].
@@ -1047,6 +1051,8 @@ public class BeadFrame extends Observable {
 	protected void getZprofileAndFit() {
             
                 if(isFlat()) {
+                    zProfile = new double[3][ip.getNSlices()];
+                    R2[Z] = 1;
                     return;
                 };
             

@@ -482,6 +482,8 @@ public class BeadFrame2D extends BeadFrame {
 	public double[] getFittedParameters() {
 		return fittedParams;
 	}
+       
+        
 	/*
 	public static void analyseBeadImage(BeadImage image, int threshold,
 			int frameSize, DataSet dataset, String id) {

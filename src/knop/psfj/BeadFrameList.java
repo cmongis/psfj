@@ -156,7 +156,7 @@ public class BeadFrameList extends ArrayList<BeadFrame> {
 			String columnNameNotCorrected = columnNameNotNormalized + " not corrected";
 			String columnNameNormalized = FWHM_NORM_NAMES[axe];
 			String rCoeffName = String.format("R^2 FWHM%s", axeStrings[axe]);
-			if(axe < 2) rCoeffName = "R^2 FWHMmin;max";
+			if(axe < 2) rCoeffName = "R^2 FWHM min/max";
 			dataSet.addColumn(PSFj.getColumnName(PSFj.FWHM_KEY, axe, PSFj.NOT_NORMALIZED)).setUnit(unit).setName(columnNameNotNormalized);;
 			dataSet.addColumn(PSFj.getColumnName(PSFj.FWHM_KEY, axe, PSFj.NOT_NORMALIZED)+"_nc").setUnit(unit).setName(columnNameNotCorrected);;;
 			dataSet.addColumn(PSFj.getColumnName(PSFj.FWHM_KEY, axe, PSFj.NORMALIZED)).setName(columnNameNormalized);;
@@ -184,7 +184,14 @@ public class BeadFrameList extends ArrayList<BeadFrame> {
 			dataSet.addColumn(PSFj.SIGMA_Y_KEY).setName("Sigma Y").setUnit(unit);
 			dataSet.addColumn(PSFj.THETA_IN_RADIAN_KEY).setName("Theta").setUnit(MathUtils.RADIANT);
 		}
+                
+                dataSet
+                        .addColumn(PSFj.CENTROID_BRIGHTNESS_KEY)
+                        .setName(PSFj.CENTROID_BRIGHTNESS_NAME);
 		
+                dataSet.addColumn(PSFj.FITTED_BRIGHTNESS).setName(PSFj.FITTED_BRIGHTNESS);
+                dataSet.addColumn(PSFj.FITTED_BACKGROUND).setName(PSFj.FITTED_BACKGROUND);
+                
 		axeStrings = new String[] { "x","y","z" };
 		String[] axeNormsValue = new String[] { "XY","XY","Z" };
 		
@@ -240,10 +247,12 @@ public class BeadFrameList extends ArrayList<BeadFrame> {
 			dataSet.addValue(PSFj.XC, bead.getFovX());
 			dataSet.addValue(PSFj.YC, bead.getFovY());
 			dataSet.addValue(PSFj.RADIUS, bead.getDistanceFromCenter());
-
+                        
 			double z_profile = bead.getCParameter(BeadFrame.Z);
 
 			dataSet.addValue(PSFj.Z_PROFILE,PSFj.NOT_NORMALIZED, z_profile);
+                        
+                       
 
 			/*
 			// corrected and uncorrected resolutions
@@ -275,6 +284,12 @@ public class BeadFrameList extends ArrayList<BeadFrame> {
 			
 			dataSet.addValue(PSFj.THRESHOLD_KEY, bead.getSource().getThresholdValue());
 			
+                         // adding brightness
+                        dataSet.addValue(PSFj.CENTROID_BRIGHTNESS_KEY,bead.getIntensity(bead.centroid));
+                        
+                        dataSet.addValue(PSFj.FITTED_BRIGHTNESS,bead.getFittingParameter(BeadFrame.X, BeadFrame.A));
+                        dataSet.addValue(PSFj.FITTED_BACKGROUND,bead.getFittingParameter(BeadFrame.X, BeadFrame.B));
+                        
 			if(bead instanceof BeadFrame2D) {
 			BeadFrame2D bead2d = (BeadFrame2D) bead;
 				if(bead2d.getFittedParameters() == null) {
@@ -294,6 +309,7 @@ public class BeadFrameList extends ArrayList<BeadFrame> {
 				}
 			}
 			
+                       
 			
 			// if the bead has an alter ego
 			if (includeMultichannelData) {
