@@ -342,6 +342,7 @@ public class HeatMapPage extends WizardPage {
 		}
 		
 		actionComboBox.addItem(onPDFExport);
+                actionComboBox.addItem(onSaveAsCSVParsable);
 		actionComboBox.addItem(onSaveDataAs);
 		
 	
@@ -769,6 +770,35 @@ public class HeatMapPage extends WizardPage {
 				if(path != null) {
 					getBeadImageManager().setExportDirectory(path);
 					getBeadImageManager().exportCSVFile(true);
+					setLastFolder(path);
+				}
+			}
+		}
+	};
+        
+        	/** The on save as csv. */
+	public ExportAction onSaveAsCSVParsable = new ExportAction("Results CSV file (version 2)","/icon-csv.gif") {
+		
+		
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			if(getBeadImageManager().getAnalysisType() == BeadImageManager.SINGLE_CHANNEL) {
+			SaveDialog sd = new SaveDialog("Save CSV file...", getLastFolder(),
+					getBeadImageManager().getAnalysisName(), ".csv");
+
+			if (sd.getDirectory() == null)
+				return;
+
+			String path = sd.getDirectory() + sd.getFileName();
+			setLastFolder(sd.getDirectory());
+			getBeadImageManager().exportCSVFileV2(path,",",true);
+			}
+			else {
+				String path = FileUtils.getDirectory("Select CSV export directory", getBeadImageManager().getExportDirectory());
+				if(path != null) {
+					getBeadImageManager().setExportDirectory(path);
+					getBeadImageManager().exportCSVFileV2(path,",",true);
 					setLastFolder(path);
 				}
 			}
