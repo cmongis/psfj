@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
+import knop.psfj.exporter.CsvExporerParsable;
 
 import knop.psfj.exporter.CsvExporter;
 import knop.psfj.exporter.PDFExporter;
@@ -235,7 +236,9 @@ public class BeadImageManager extends Observable implements Observer {
 
 		// calculating the focus
 		beadImage.autoFocus();
-
+                
+                beadImage.autoThreshold();
+                
 		// setting the name from the bead iamge
 		beadImage.setImageName(ipl.getShortTitle());
 
@@ -1754,6 +1757,11 @@ public class BeadImageManager extends Observable implements Observer {
 		CsvExporter exporter = new CsvExporter(this);
 		exporter.exportCsv(path, openAfter);
 	}
+        
+        public void exportCSVFileV2(String path, String separator, boolean openAfter) {
+            CsvExporter exporter = new CsvExporerParsable(this);
+            exporter.exportCsv(path, openAfter);
+        }
 
 	/**
 	 * Export csv file(s) in the export folder. Opens the folder if openAfter is true.
