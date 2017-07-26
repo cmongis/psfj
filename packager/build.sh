@@ -4,7 +4,7 @@ FILES=./files
 MACOS=./macos_str
 VERSION=$(cat version)
 BIN=../dist
-
+BUILD_FOLDER=build
 
 if [[ -n "$1" ]]; then
 	let "VERSION=VERSION+1";
@@ -17,23 +17,26 @@ echo "Building number $VERSION...";
 # building windows/Linux bundle
 echo $VERSION > version;
 echo "Deleting build directory..."
-rm -R build || echo "no build directory, creating"
-mkdir build
+rm -R $BUILD_FOLDER || echo "no build directory, creating"
+mkdir $BUILD_FOLDER
 
 #Create PSFj structure that will contains all the files for Windows and Linux
-mkdir build/PSFj
+mkdir $BUILD_FOLDER/PSFj
 echo "Creating WINDOWS/LINUX ZIP file"
 
 #Copies the text files and executable
-cp -R $FILES/* build/PSFj
-cp -R $BIN/* build/PSFj
+cp -R $FILES/* $BUILD_FOLDER/PSFj
+cp -R $BIN/* $BUILD_FOLDER/PSFj
+
+cd $BUILD_FOLDER
 
 #Zips the whole things
-zip -ur build/$WL_NAME.zip build/PSFj
+zip -ur $WL_NAME.zip ./PSFj
 
 #Copy it in the build directory
-cp build/$WL_NAME.zip build/psfj_latest.zip
+cp ./$WL_NAME.zip ./psfj_latest.zip
 
+cd ../
 #Delete the build
 #rm -R build/PSFj
 
@@ -55,17 +58,17 @@ cp -Rv $FILES/psfj build/PSFj.app/Contents/MacOS/
 
 echo "Zipping MacOS Bundle"
 #going to the build folder to get the zip hierarchy right
-cd build
-zip -ur ../build/$MAC_NAME.zip PSFj.app
+cd $BUILD_FOLDER
+zip -ur ../$BUILD_FOLDER/$MAC_NAME.zip PSFj.app
 cd ..
 #going to the file folder
 cd $FILES
-zip -ur ../build/$MAC_NAME.zip *.txt;
-zip -ur ../build/$MAC_NAME.zip *.pdf;
+zip -ur ../$BUILD_FOLDER/$MAC_NAME.zip *.txt;
+zip -ur ../$BUILD_FOLDER/$MAC_NAME.zip *.pdf;
 
 
 #copying and creating a new build
-cp ../build/$MAC_NAME.zip ../build/psfj_macos_latest.zip
+cp ../$BUILD_FOLDER/$MAC_NAME.zip ../$BUILD_FOLDER/psfj_macos_latest.zip
 
 cd ..
 
