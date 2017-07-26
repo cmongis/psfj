@@ -122,7 +122,7 @@ public class BeadLocator2D extends BeadLocator {
 
         // comparing all points together to see if there is overlap
         for (i = 0; i != total; i++) {
-            if (100 * i / total % 10 == 0) {
+            if ((100 * i / total) % 10 == 0) {
                 image.setProgress(i, total);
             }
             Rectangle r = beadRectangleList.get(i);
