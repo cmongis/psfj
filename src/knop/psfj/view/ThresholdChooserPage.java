@@ -256,6 +256,11 @@ public class ThresholdChooserPage extends WizardPage {
 				updateImage();
 			}
 			if (message.getName().contains("changed")) {
+                                
+                                if(thresholdSlider.getValue() == -1) {
+                                    updateSliders();
+                                }
+                            
 				updateSliderValues();
 				updateSliderLabels();
 			}
