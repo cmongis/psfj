@@ -70,7 +70,7 @@ public class PSFj {
             options.addOption("f", "fill-report", true,
                     "compile informations in a file in the export folder");
 
-            options.addOption("2c", "dual-channel", false, "compare two channels");
+            options.addOption("2c", "dual-channel", true, "multichannel analysis with the specified file (INI file mandatory)");
 
             CommandLineParser parser = new GnuParser();
             CommandLine cmd = null;
@@ -120,7 +120,7 @@ public class PSFj {
             BeadImage image;
 
             try {
-
+                System.out.println("Loading "+filename+"...");
                 image = new BeadImage(filename);
 
                 if (calibrationFile != null) {
@@ -130,7 +130,17 @@ public class PSFj {
                 image.workFromMemory();
                 image.autoFocus();
                 manager.add(image);
-
+                
+                if(cmd.hasOption("2c")) {
+                    System.out.println("Multichannel analysis decteted");
+                    BeadImage channel2 = new BeadImage(cmd.getOptionValue("2c"));
+                    System.out.println("Loading second channel...");
+                    channel2.workFromMemory();
+                    channel2.autoFocus();
+                    manager.add(channel2);
+                }
+                
+                
                 if (cmd.hasOption('w')) {
 
                     int enlargement;
