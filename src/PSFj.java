@@ -18,6 +18,8 @@ import knop.psfj.view.ThresholdChooserPage;
 import knop.psfj.view.WizardWindow;
 import knop.utils.stats.DataSet;
 
+import knop.psfj.locator.BeadLocator3D;
+
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.GnuParser;
@@ -71,6 +73,8 @@ public class PSFj {
                     "compile informations in a file in the export folder");
 
             options.addOption("2c", "dual-channel", true, "multichannel analysis with the specified file (INI file mandatory)");
+
+            options.addOption("3d", "three-dimensional", false, "3-dimensional analysis with the specified file");
 
             CommandLineParser parser = new GnuParser();
             CommandLine cmd = null;
@@ -140,6 +144,9 @@ public class PSFj {
                     manager.add(channel2);
                 }
                 
+                if(cmd.hasOption("3d")) {
+                    manager.setLocator(new BeadLocator3D());
+                }
                 
                 if (cmd.hasOption('w')) {
 
