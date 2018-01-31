@@ -7,12 +7,12 @@ import knop.psfj.BeadImage;
 import knop.psfj.BeadImageManager;
 import knop.psfj.FovDataSet;
 import knop.psfj.SplashScreen;
+import knop.psfj.locator.BeadLocator3D;
 import knop.psfj.resolution.Microscope;
 import knop.psfj.utils.IniFile;
 import knop.psfj.view.BeadImageLoaderPage;
 import knop.psfj.view.CalibrationPage;
 import knop.psfj.view.HeatMapPage;
-import knop.psfj.view.Message;
 import knop.psfj.view.ProcessingPage;
 import knop.psfj.view.ThresholdChooserPage;
 import knop.psfj.view.WizardWindow;
@@ -31,7 +31,7 @@ public class PSFj {
     public static String CALIBRATION_SECTION = "pixel";
 
     public static String getVersion() {
-        return "2.0, build 72";
+        return knop.psfj.PSFj.getVersion();
     }
 
     public static void main(String[] args) {
@@ -71,7 +71,7 @@ public class PSFj {
                     "compile informations in a file in the export folder");
 
             options.addOption("2c", "dual-channel", true, "multichannel analysis with the specified file (INI file mandatory)");
-
+            options.addOption("3d", "3-dimensional",false,"use 3D Object detection algorithm for bead detection");
             CommandLineParser parser = new GnuParser();
             CommandLine cmd = null;
             try {
@@ -126,10 +126,16 @@ public class PSFj {
                 if (calibrationFile != null) {
                     image.setMicroscope(new Microscope(new IniFile(calibrationFile)));
                 }
-
+                
+                if(cmd.hasOption("3d")) {
+                    manager.setLocator(new BeadLocator3D());
+                }
+                
                 image.workFromMemory();
                 image.autoFocus();
                 manager.add(image);
+                
+                
                 
                 if(cmd.hasOption("2c")) {
                     System.out.println("Multichannel analysis decteted");
