@@ -79,6 +79,8 @@ A good example is to look at the PSFj.java file which more extensively the BeadI
 
 ### Diving into the data model
 
+... coming soon.
+
 ## Licencing
 
 PSFj is free software: you can redistribute it and/or modify
