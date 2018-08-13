@@ -25,37 +25,47 @@ package knop.psfj.utils;
  */
 public class MemoryUtils {
 
-/**
- * Gets the available memory.
- *
- * @return the available memory
- */
-public static long getAvailableMemory() {
-		
-		Runtime runtime = Runtime.getRuntime();
-	
-		int max = (int) (runtime.maxMemory()/1024/1024);
-		int total = (int) (runtime.totalMemory()/1024/1024);
-		int free = (int) (runtime.freeMemory()/1024/1024);
-		
-		free = free+ max - total;
-		
-		int used = max-free;
-		
-		
-		return free;
-		
-	}
-	
-	/**
-	 * Gets the total memory.
-	 *
-	 * @return the total memory
-	 */
-	public static long getTotalMemory() {
-		return Runtime.getRuntime().maxMemory()/1024/1024;
-	}
-	public static long getMaximumMemory() {
-		return Runtime.getRuntime().maxMemory()/1024/1024;
-	}
+    /**
+     * Gets the available memory.
+     *
+     * @return the available memory
+     */
+    public static long getAvailableMemory() {
+
+        Runtime runtime = Runtime.getRuntime();
+
+        int max = (int) (runtime.maxMemory() / 1024 / 1024);
+        int total = (int) (runtime.totalMemory() / 1024 / 1024);
+        int free = (int) (runtime.freeMemory() / 1024 / 1024);
+
+        free = free + max - total;
+
+        int used = max - free;
+
+        return free;
+
+    }
+
+    /**
+     * Gets the total memory.
+     *
+     * @return the total memory
+     */
+    public static long getTotalMemory() {
+        return Runtime.getRuntime().maxMemory() / 1024 / 1024;
+    }
+
+    public static long getMaximumMemory() {
+        return Runtime.getRuntime().maxMemory() / 1024 / 1024;
+    }
+
+    public static double getAvailableMemoryFraction() {
+        Runtime runtime = Runtime.getRuntime();
+
+        long max = runtime.maxMemory();
+        long total = runtime.totalMemory();
+        long free = runtime.freeMemory();
+        free = free + max - total;
+        return 1.0 * free / total;
+    }
 }

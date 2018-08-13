@@ -23,6 +23,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import knop.psfj.utils.MathUtils;
+import knop.psfj.utils.MemoryUtils;
 import knop.psfj.view.Message;
 
 // TODO: Auto-generated Javadoc
@@ -101,8 +102,14 @@ public class BeadFrameProcessor extends Observable implements Observer {
 		
 		
 		long now = System.currentTimeMillis();
-
-		if (frameCompleted % garbageCollectionFrequence == 0) {
+                
+                
+                double available = 1.0 * MemoryUtils.getAvailableMemory() / MemoryUtils.getTotalMemory();
+                
+                
+                
+		if(available < 0.2) {
+                    System.out.println("Available : "+available);
 			System.gc();
 		}
 		// if the last refresh was more than refresh delay
